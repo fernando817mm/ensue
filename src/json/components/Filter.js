@@ -1,10 +1,15 @@
 import React from "react";
 
 const Filter = () => {
+  const handleExpand = (e) => {
+    e.preventDefault();
+    console.log("click");
+  };
+
   return (
     <header className="body-wrapper">
       <section className="filter-list">
-        <a className="btn btn-expand" href="view2.html">
+        <a className="btn btn-expand" href="view2.html" onClick={handleExpand}>
           +
         </a>
         <div className="department-list">

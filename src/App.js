@@ -16,7 +16,7 @@ const App = () => {
           <div className="data-wrapper">
             <ul className="filtered-student">
               {studentArr.map((student) => {
-                return <Student student={student} />;
+                return <Student student={student} key={student.id} />;
               })}
             </ul>
           </div>
