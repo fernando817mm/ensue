@@ -119,6 +119,9 @@
   font-size: 1vw;
   padding: 1vw;
   font-weight: bold;
+  cursor: pointer;
+  color: #551a8b;
+  text-decoration: underline;
 }
 .filter-list.expanded {
   padding-right: 3vw;

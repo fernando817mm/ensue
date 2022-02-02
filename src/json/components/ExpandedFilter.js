@@ -2,7 +2,7 @@ import React from "react";
 import Departments from "./Departments";
 
 const ExpandedFilter = (props) => {
-  const { handleFilter, departments } = props;
+  const { handleFilter, departments, handleActive, handleFilterData } = props;
 
   return (
     <div className="body-wrapper">
@@ -11,7 +11,11 @@ const ExpandedFilter = (props) => {
           <a className="btn btn-close" onClick={handleFilter}>
             -
           </a>
-          <Departments departments={departments} />
+          <Departments
+            departments={departments}
+            handleActive={handleActive}
+            handleFilterData={handleFilterData}
+          />
         </section>
       </header>
     </div>
