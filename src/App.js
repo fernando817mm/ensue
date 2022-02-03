@@ -23,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     const arr = [];
-    studentsArr.map((student) => {
+    studentArr.map((student) => {
       if (student.subject === subject) {
         arr.push(student);
       }
