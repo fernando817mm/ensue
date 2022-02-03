@@ -1,13 +1,21 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import React from "react";
 
 const CollapsedFilter = (props) => {
-  const { handleFilter } = props;
+  const { switchCase } = props;
 
   return (
     <div className="body-wrapper">
       <header>
         <section className="filter-list">
-          <a className="btn btn-expand" onClick={handleFilter}>
+          <a
+            className="btn btn-expand"
+            onClick={(e) => {
+              e.preventDefault();
+              switchCase("expanded");
+            }}
+          >
             +
           </a>
           <div className="department-list">

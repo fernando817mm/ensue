@@ -5,48 +5,43 @@ import ExpandedFilter from "./ExpandedFilter";
 import ActiveFilter from "./ActiveFilter";
 
 const Filter = (props) => {
-  const [open, setOpen] = useState(false);
-  const [activeFilter, setActiveFilter] = useState(false);
-  const [filterData, setFilterData] = useState(null);
+  const [filterData, setFilterData] = useState("");
+  const [filter, setFilter] = useState(null);
   const { departmentArr, changeSubject } = props;
 
-  const handleFilter = (e) => {
-    e.preventDefault();
-    return setOpen(!open);
-  };
-
-  const handleActive = (e) => {
-    e.preventDefault();
-    return setActiveFilter(!activeFilter);
+  const switchCase = (arg) => {
+    return setFilter(arg);
   };
 
   const handleFilterData = (obj) => {
     setFilterData(obj);
   };
 
-  if (!open) {
-    return <CollapsedFilter handleFilter={handleFilter} />;
-  } else if (open && !activeFilter) {
-    return (
-      <ExpandedFilter
-        handleFilter={handleFilter}
-        departments={departmentArr}
-        handleActive={handleActive}
-        handleFilterData={handleFilterData}
-        changeSubject={changeSubject}
-      />
-    );
-  } else if (open && activeFilter) {
-    return (
-      <ActiveFilter
-        handleFilter={handleFilter}
-        handleActive={handleActive}
-        filterData={filterData}
-        changeSubject={changeSubject}
-      />
-    );
-  } else {
-    return <h1>No data available</h1>;
+  const expanded = "expanded";
+  const active = "active";
+
+  switch (filter) {
+    case expanded:
+      return (
+        <ExpandedFilter
+          departments={departmentArr}
+          switchCase={switchCase}
+          handleFilterData={handleFilterData}
+          changeSubject={changeSubject}
+        />
+      );
+    case active:
+    case filterData !== null:
+      return (
+        <ActiveFilter
+          switchCase={switchCase}
+          filterData={filterData}
+          changeSubject={changeSubject}
+          setFilterData={setFilterData}
+        />
+      );
+    default:
+      return <CollapsedFilter switchCase={switchCase} />;
   }
 };
 

@@ -29,7 +29,6 @@ const App = () => {
       }
     });
     changeStudentsArr(arr);
-    console.log(arr);
   }, [subject]);
 
   useEffect(() => {
@@ -39,11 +38,14 @@ const App = () => {
   return (
     <div className="body">
       <div className="body-wrapper">
-        <Filter departmentArr={departmentArr} changeSubject={changeSubject} />
+        <Filter
+          departmentArr={departmentArr}
+          changeSubject={changeSubject}
+          subject={subject}
+        />
         <Students
           studentsArr={studentsArr}
           changeStudentsArr={changeStudentsArr}
-          subject={subject}
         />
       </div>
     </div>

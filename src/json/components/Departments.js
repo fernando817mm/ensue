@@ -2,7 +2,7 @@ import React from "react";
 import Department from "./Department";
 
 const Departments = (props) => {
-  const { departments, handleActive, handleFilterData, changeSubject } = props;
+  const { departments, switchCase, handleFilterData, changeSubject } = props;
   return (
     <div className="department-list">
       {departments.map((department, idx) => {
@@ -10,7 +10,7 @@ const Departments = (props) => {
           <Department
             key={idx}
             department={department}
-            handleActive={handleActive}
+            switchCase={switchCase}
             handleFilterData={handleFilterData}
             changeSubject={changeSubject}
           />

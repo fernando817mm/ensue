@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// a tags don't have h-ref ^^
 
 import React, { useState } from "react";
 
 const ActiveFilter = (props) => {
-  const { handleFilter, handleActive, filterData, changeSubject } = props;
+  const { filterData, changeSubject, switchCase, setFilterData } = props;
   const { subjects } = filterData;
 
   const [expanded, setExpanded] = useState(false);
@@ -28,8 +27,7 @@ const ActiveFilter = (props) => {
         <a
           className="btn btn-expand"
           onClick={(e) => {
-            handleFilter(e);
-            handleActive(e);
+            switchCase("expanded");
           }}
         >
           +
@@ -51,7 +49,12 @@ const ActiveFilter = (props) => {
                           className="subject-name"
                           onClick={(e) => {
                             e.preventDefault();
-                            changeSubject(sub);
+                            const newActive = {
+                              ...filterData,
+                              activeSubject: sub,
+                            };
+                            setFilterData(newActive);
+                            changeSubject(newActive.activeSubject);
                           }}
                         >
                           {sub}
@@ -65,7 +68,12 @@ const ActiveFilter = (props) => {
                         className="subject-name"
                         onClick={(e) => {
                           e.preventDefault();
-                          changeSubject(sub);
+                          const newActive = {
+                            ...filterData,
+                            activeSubject: sub,
+                          };
+                          setFilterData(newActive);
+                          changeSubject(newActive.activeSubject);
                         }}
                       >
                         {sub}

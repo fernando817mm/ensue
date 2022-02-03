@@ -1,7 +1,7 @@
 import React from "react";
 
 const Subject = (props) => {
-  const { subject, handleActive, department, handleFilterData, changeSubject } =
+  const { subject, switchCase, department, handleFilterData, changeSubject } =
     props;
 
   const activeData = { ...department, activeSubject: subject };
@@ -10,9 +10,10 @@ const Subject = (props) => {
     <div
       className="subject-name"
       onClick={(e) => {
+        e.preventDefault();
         changeSubject(subject);
         handleFilterData(activeData);
-        return handleActive(e);
+        switchCase("active");
       }}
     >
       {subject}
