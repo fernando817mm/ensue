@@ -1,28 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Filter = () => {
-  const handleExpand = (e) => {
+import CollapsedFilter from "./CollapsedFilter";
+import ExpandedFilter from "./ExpandedFilter";
+import ActiveFilter from "./ActiveFilter";
+
+const Filter = (props) => {
+  const [open, setOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState(false);
+  const [filterData, setFilterData] = useState(null);
+  const { departmentArr, changeSubject } = props;
+
+  const handleFilter = (e) => {
     e.preventDefault();
-    console.log("click");
+    return setOpen(!open);
   };
 
-  return (
-    <header className="body-wrapper">
-      <section className="filter-list">
-        <a className="btn btn-expand" href="view2.html" onClick={handleExpand}>
-          +
-        </a>
-        <div className="department-list">
-          <div className="department">
-            <div className="dept-name active">All Departments</div>
-            <div className="subjects-wrapper">
-              <div className="subject-name active">All Subjects</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </header>
-  );
+  const handleActive = (e) => {
+    e.preventDefault();
+    return setActiveFilter(!activeFilter);
+  };
+
+  const handleFilterData = (obj) => {
+    setFilterData(obj);
+  };
+
+  if (!open) {
+    return <CollapsedFilter handleFilter={handleFilter} />;
+  } else if (open && !activeFilter) {
+    return (
+      <ExpandedFilter
+        handleFilter={handleFilter}
+        departments={departmentArr}
+        handleActive={handleActive}
+        handleFilterData={handleFilterData}
+        changeSubject={changeSubject}
+      />
+    );
+  } else if (open && activeFilter) {
+    return (
+      <ActiveFilter
+        handleFilter={handleFilter}
+        handleActive={handleActive}
+        filterData={filterData}
+        changeSubject={changeSubject}
+      />
+    );
+  } else {
+    return <h1>No data available</h1>;
+  }
 };
 
 export default Filter;
