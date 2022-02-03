@@ -2,13 +2,8 @@ import React from "react";
 import Subject from "./Subject";
 
 const Subjects = (props) => {
-  const {
-    subjects,
-    handleActive,
-    department,
-    handleFilterData,
-    changeSubject,
-  } = props;
+  const { subjects, switchCase, department, handleFilterData, changeSubject } =
+    props;
 
   return (
     <div className="subjects-wrapper">
@@ -17,7 +12,7 @@ const Subjects = (props) => {
           <Subject
             key={subject + idx}
             subject={subject}
-            handleActive={handleActive}
+            switchCase={switchCase}
             department={department}
             handleFilterData={handleFilterData}
             changeSubject={changeSubject}
