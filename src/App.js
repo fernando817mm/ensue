@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import students from "./json/students.json";
 import departments from "./json/departments.json";
@@ -11,19 +11,40 @@ const App = () => {
   const departmentArr = departments.departments;
 
   const [studentsArr, setStudentsArr] = useState(studentArr);
+  const [subject, setSubject] = useState(null);
 
-  const changeStudentsArr = (arr, subject) => {
+  const changeStudentsArr = (arr) => {
     return setStudentsArr(arr);
   };
+
+  const changeSubject = (sub) => {
+    setSubject(sub);
+  };
+
+  useEffect(() => {
+    const arr = [];
+    studentsArr.map((student) => {
+      if (student.subject === subject) {
+        arr.push(student);
+      }
+    });
+    changeStudentsArr(arr);
+    console.log(arr);
+  }, [subject]);
+
+  useEffect(() => {
+    setStudentsArr(studentArr);
+  }, []);
 
   return (
     <div className="body">
       <div className="body-wrapper">
-        <Filter
-          departmentArr={departmentArr}
+        <Filter departmentArr={departmentArr} changeSubject={changeSubject} />
+        <Students
+          studentsArr={studentsArr}
           changeStudentsArr={changeStudentsArr}
+          subject={subject}
         />
-        <Students studentArr={studentsArr} />
       </div>
     </div>
   );

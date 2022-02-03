@@ -2,7 +2,7 @@ import React from "react";
 import Subjects from "./Subjects";
 
 const Department = (props) => {
-  const { department, handleActive, handleFilterData } = props;
+  const { department, handleActive, handleFilterData, changeSubject } = props;
 
   return (
     <div className="department">
@@ -12,6 +12,7 @@ const Department = (props) => {
         handleActive={handleActive}
         department={department}
         handleFilterData={handleFilterData}
+        changeSubject={changeSubject}
       />
     </div>
   );

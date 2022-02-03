@@ -2,7 +2,13 @@ import React from "react";
 import Departments from "./Departments";
 
 const ExpandedFilter = (props) => {
-  const { handleFilter, departments, handleActive, handleFilterData } = props;
+  const {
+    handleFilter,
+    departments,
+    handleActive,
+    handleFilterData,
+    changeSubject,
+  } = props;
 
   return (
     <div className="body-wrapper">
@@ -15,6 +21,7 @@ const ExpandedFilter = (props) => {
             departments={departments}
             handleActive={handleActive}
             handleFilterData={handleFilterData}
+            changeSubject={changeSubject}
           />
         </section>
       </header>

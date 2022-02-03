@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 
 const ActiveFilter = (props) => {
-  const { handleFilter, handleActive, filterData } = props;
+  const { handleFilter, handleActive, filterData, changeSubject } = props;
   const { subjects } = filterData;
 
   const [expanded, setExpanded] = useState(false);
@@ -19,7 +19,6 @@ const ActiveFilter = (props) => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    console.log("click");
     return setExpanded(!expanded);
   };
 
@@ -47,27 +46,32 @@ const ActiveFilter = (props) => {
                     .filter((sub, idx) => idx < 3)
                     .map((sub, idx) => {
                       return (
-                        <div key={idx} className="subject-name">
+                        <div
+                          key={idx}
+                          className="subject-name"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            changeSubject(sub);
+                          }}
+                        >
                           {sub}
                         </div>
                       );
                     })
                 : subjectsArr.map((sub, idx) => {
                     return (
-                      <div key={idx} className="subject-name">
+                      <div
+                        key={idx}
+                        className="subject-name"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          changeSubject(sub);
+                        }}
+                      >
                         {sub}
                       </div>
                     );
                   })}
-              {/* {subjectsArr
-                .filter((sub, idx) => idx < 3)
-                .map((sub, idx) => {
-                  return (
-                    <div key={idx} className="subject-name">
-                      {sub}
-                    </div>
-                  );
-                })} */}
               <div className="more-less">
                 <a onClick={handleChange}>
                   {!expanded

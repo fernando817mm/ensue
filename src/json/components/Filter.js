@@ -8,7 +8,7 @@ const Filter = (props) => {
   const [open, setOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState(false);
   const [filterData, setFilterData] = useState(null);
-  const { departmentArr } = props;
+  const { departmentArr, changeSubject } = props;
 
   const handleFilter = (e) => {
     e.preventDefault();
@@ -33,6 +33,7 @@ const Filter = (props) => {
         departments={departmentArr}
         handleActive={handleActive}
         handleFilterData={handleFilterData}
+        changeSubject={changeSubject}
       />
     );
   } else if (open && activeFilter) {
@@ -41,6 +42,7 @@ const Filter = (props) => {
         handleFilter={handleFilter}
         handleActive={handleActive}
         filterData={filterData}
+        changeSubject={changeSubject}
       />
     );
   } else {

@@ -2,7 +2,7 @@ import React from "react";
 import Department from "./Department";
 
 const Departments = (props) => {
-  const { departments, handleActive, handleFilterData } = props;
+  const { departments, handleActive, handleFilterData, changeSubject } = props;
   return (
     <div className="department-list">
       {departments.map((department, idx) => {
@@ -12,6 +12,7 @@ const Departments = (props) => {
             department={department}
             handleActive={handleActive}
             handleFilterData={handleFilterData}
+            changeSubject={changeSubject}
           />
         );
       })}
