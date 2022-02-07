@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import students from "./json/students.json";
 import departments from "./json/departments.json";
 
-import Filter from "./json/components/Filter";
-import Students from "./json/components/Students";
+import Filter from "./components/Filter";
+import Students from "./components/Students";
 
 const App = () => {
   const studentArr = students.body.studentData.students;
